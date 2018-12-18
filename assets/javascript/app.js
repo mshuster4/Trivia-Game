@@ -33,18 +33,22 @@ var intervalID;
 var time;
 
 var questionCounter = 0; 
+var correctCounter = 0;
+var incorrectCounter = 0;
+var timedOutCounter = 0; 
 
 var correctAnswer; 
 
 function nextQuestion(questionCounter) {
 
-for(var i = 0; i < triviaArray.length; i++) {
+    for(var i = 0; i < triviaArray.length; i++) {
 
-   $("#question-display").html(triviaArray[questionCounter].question); 
+    $("#question-display").html(triviaArray[questionCounter].question); 
 
-}
+    }
 
-checkQuestion(questionCounter); 
+    checkQuestion(questionCounter); 
+
 
 }
 
@@ -69,31 +73,60 @@ function checkQuestion(questionCounter) {
 
         if (userGuess === correctAnswer){
 
-            correctAnswer(); 
+            correctCounter++;
+            console.log(correctCounter); 
+            rightAnswer();
+            stopTimer(); 
     
         }
-    
+
         if (userGuess !== correctAnswer) {
             
+            incorrectCounter++;
+            console.log(incorrectCounter);
             wrongAnswer(); 
+            stopTimer(); 
+
         }
 
     }); 
 
 }
 
-function correctAnswer() {
+function rightAnswer() {
 
-    console.log("correct!")
+    $("#options-display").empty();
+    $("#timer").empty();
+    $("#question-display").empty();
+    $("#question-display").text("Correct!")
+    setTimeout(questionReset, 5 * 1000); 
 }
 
+function questionReset() {
+
+    questionCounter++;
+    nextQuestion(questionCounter);
+    startTimer();
+
+}
 
 function wrongAnswer() {
 
-    console.log("nope!")
-
+    $("#options-display").empty();
+    $("#timer").empty(); 
+    $("#question-display").empty();
+    $("#question-display").text("Nope!")
+    setTimeout(questionReset, 5 * 1000); 
 }
 
+function timedOut() {
+
+    $("#options-display").empty();
+    $("#timer").empty(); 
+    $("#question-display").empty();
+    $("#question-display").text("You timed out!")
+    setTimeout(questionReset, 5 * 1000); 
+}
 
 function startTimer() {
 
@@ -106,7 +139,6 @@ function startTimer() {
 
 }
 
-
 function stopTimer() {
 
     clearInterval(intervalID);
@@ -118,9 +150,11 @@ function count() {
         time --;
         $("#timer").text(time); 
         if (time === 0) {
-        
+            
+            timedOutCounter++; 
+            console.log(timedOutCounter);
             stopTimer();
-            wrongAnswer(); 
+            timedOut(); 
 
         }
 
