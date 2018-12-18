@@ -7,43 +7,105 @@
 //Display "Start over?"
 //Reset game (with no page reload)
 
-var trivia = [
-    questionsObject = {
-        qOne: 'Which type of animal is Rocko from Rockos Modern Life?',
-        qTwo: 'What is the name of Rugrat Angelicas doll?',
-        qThree: 'Which school do the kids in Hey Arnold attend?',
-    },
-    
-    optionsObject = {
-        optionsOne : ['Dog', 'Wallaby', 'Mouse', 'Beaver'],
-        optionsTwo: ['Sue', 'Cynthia', 'Betty', 'Candy'],
-        optionThree: ['PS 118', 'PS 108', 'PS 110', 'PS 128'],
-    },
+var triviaArray = [
+    {
+        question: "Which type of animal is Rocko from Rockos Modern Life",
+        options: ["Dog", "Mouse", "Wallaby", "Beaver"],
+        answer: "Wallaby"
 
-    answersObject = {
-        ansOne: ['Wallaby'],
-        ansTwo: ['Cynthia'],
-        ansThree: ['PS 118'], 
-        
     },
+    {
+        question: "What is the name of Rugrat Angelica's doll?",
+        options: ["Betty", "Lisa", "Sandy", "Cynthia"],
+        answer: "Cynthia"
+    },
+    {
+        question: "Which school did the kids in Hey Arnold attend?",
+        options: ["PS 118", "PS 120", "PS 108", "PS 111"],
+        answer: "PS 118"
+    }
 ];
 
 var isTimerRunning = false; 
 
 var intervalID;
 
-var time = 10
+var time;
 
-console.log(time); 
+var questionCounter = 0; 
+
+var correctAnswer; 
+
+function nextQuestion(questionCounter) {
+
+for(var i = 0; i < triviaArray.length; i++) {
+
+   $("#question-display").html(triviaArray[questionCounter].question); 
+
+}
+
+checkQuestion(questionCounter); 
+
+}
+
+function checkQuestion(questionCounter) {
+
+    for (var i = 0; i < triviaArray[questionCounter].options.length; i++) {
+        var answerBtn = $("<button>");
+        answerBtn.addClass("answer-button");
+        answerBtn.attr("value", triviaArray[questionCounter].options[i]); 
+        answerBtn.text(triviaArray[questionCounter].options[i]);
+        $("#options-display").append(answerBtn); 
+    }
+
+    correctAnswer = triviaArray[questionCounter].answer;
+
+    console.log(correctAnswer);
+
+    $(".answer-button").on('click', function() {
+
+        var userGuess = $(this).attr("value"); 
+        console.log(userGuess); 
+
+        if (userGuess === correctAnswer){
+
+            correctAnswer(); 
+    
+        }
+    
+        if (userGuess !== correctAnswer) {
+            
+            wrongAnswer(); 
+        }
+
+    }); 
+
+}
+
+function correctAnswer() {
+
+    console.log("correct!")
+}
+
+
+function wrongAnswer() {
+
+    console.log("nope!")
+
+}
+
 
 function startTimer() {
 
     if (!isTimerRunning) {
+        time = 10; 
+        $("#timer").text(time); 
         intervalID = setInterval(count, 1000);
         isTimerRunning = true; 
     }
 
 }
+
 
 function stopTimer() {
 
@@ -53,14 +115,22 @@ function stopTimer() {
 }
 
 function count() {
+        time --;
+        $("#timer").text(time); 
+        if (time === 0) {
+        
+            stopTimer();
+            wrongAnswer(); 
 
-    time --;
-    console.log(time);
-    if (time === 0) {
-        stopTimer();
-    }
+        }
 
 }
 
-$("#start-button").on('click', startTimer); 
+$("#start-button").on('click', function() {
+
+    $(this).hide(); 
+    nextQuestion(questionCounter); 
+    startTimer();
+
+}); 
 
