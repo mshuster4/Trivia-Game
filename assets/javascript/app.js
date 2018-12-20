@@ -35,7 +35,6 @@ var time;
 var questionCounter = 0; 
 var correctCounter = 0;
 var incorrectCounter = 0;
-var timedOutCounter = 0; 
 
 var correctAnswer; 
 
@@ -96,7 +95,7 @@ function rightAnswer() {
     $("#timer").empty();
     $("#question-display").empty();
     $("#question-display").text("Correct!")
-    setTimeout(questionReset, 5 * 1000); 
+    setTimeout(questionReset, 1000); 
 }
 
 
@@ -106,7 +105,7 @@ function wrongAnswer() {
     $("#timer").empty(); 
     $("#question-display").empty();
     $("#question-display").text("Nope!")
-    setTimeout(questionReset, 5 * 1000); 
+    setTimeout(questionReset, 1000); 
 }
 
 function timedOut() {
@@ -115,7 +114,7 @@ function timedOut() {
     $("#timer").empty(); 
     $("#question-display").empty();
     $("#question-display").text("You timed out!")
-    setTimeout(questionReset, 5 * 1000); 
+    setTimeout(questionReset, 1000); 
 
 }
 
@@ -142,17 +141,19 @@ function gameOver() {
     
     $("#question-display").empty();
     $("#question-display").text("Game over. Click the button to play again");
-    console.log("correct: ", correctCounter);
-    console.log("incorrect: ", incorrectCounter);
-    console.log("unanswered: ", timedOutCounter); 
+    $("#correct").append("Correct: ", correctCounter); 
+    $("#wrong").append("Incorrect: ", incorrectCounter);
+
     createRefreshButton();
 
 }
 
 function createRefreshButton(){
     
-    var resetButton = $('<button type="button" class="btn_btn-primary">Start</button>');
-    $('body').append(resetButton);
+    var resetButton = $('<button>Start</button>');
+    resetButton.addClass("btn btn-primary");
+    resetButton.attr("type", "button"); 
+    $('.start-restart-button').append(resetButton);
     resetButton.on('click', function(){
 
         console.log("clicked"); 
@@ -165,6 +166,8 @@ function createRefreshButton(){
 
 function gameReset() {
 
+    $("#correct").empty();
+    $("#wrong").empty(); 
     questionCounter = 0;
     correctCounter = 0;
     incorrectCounter = 0;
@@ -199,8 +202,6 @@ function count() {
         $("#timer").text(time); 
         if (time === 0) {
             
-            timedOutCounter++; 
-            console.log(timedOutCounter);
             stopTimer();
             timedOut(); 
 
