@@ -41,14 +41,13 @@ var correctAnswer;
 
 function nextQuestion(questionCounter) {
 
-    for(var i = 0; i < triviaArray.length; i++) {
+    for (var i = 0; i < triviaArray.length; i++) {
 
     $("#question-display").html(triviaArray[questionCounter].question); 
 
     }
 
     checkQuestion(questionCounter); 
-
 
 }
 
@@ -74,7 +73,6 @@ function checkQuestion(questionCounter) {
         if (userGuess === correctAnswer){
 
             correctCounter++;
-            console.log(correctCounter); 
             rightAnswer();
             stopTimer(); 
     
@@ -83,7 +81,6 @@ function checkQuestion(questionCounter) {
         if (userGuess !== correctAnswer) {
             
             incorrectCounter++;
-            console.log(incorrectCounter);
             wrongAnswer(); 
             stopTimer(); 
 
@@ -102,13 +99,6 @@ function rightAnswer() {
     setTimeout(questionReset, 5 * 1000); 
 }
 
-function questionReset() {
-
-    questionCounter++;
-    nextQuestion(questionCounter);
-    startTimer();
-
-}
 
 function wrongAnswer() {
 
@@ -126,7 +116,64 @@ function timedOut() {
     $("#question-display").empty();
     $("#question-display").text("You timed out!")
     setTimeout(questionReset, 5 * 1000); 
+
 }
+
+function questionReset() {
+
+    questionCounter++;
+
+    if (questionCounter < triviaArray.length) {
+        console.log("questionsCounter", questionCounter);
+        nextQuestion(questionCounter);
+        startTimer();
+    }
+
+    else {
+
+       gameOver();
+
+    }
+
+}
+
+
+function gameOver() {
+    
+    $("#question-display").empty();
+    $("#question-display").text("Game over. Click the button to play again");
+    console.log("correct: ", correctCounter);
+    console.log("incorrect: ", incorrectCounter);
+    console.log("unanswered: ", timedOutCounter); 
+    createRefreshButton();
+
+}
+
+function createRefreshButton(){
+    
+    var resetButton = $('<button type="button" class="btn_btn-primary">Start</button>');
+    $('body').append(resetButton);
+    resetButton.on('click', function(){
+
+        console.log("clicked"); 
+        gameReset(); 
+        $(this).hide(); 
+    });
+
+}
+
+
+function gameReset() {
+
+    questionCounter = 0;
+    correctCounter = 0;
+    incorrectCounter = 0;
+    timedOutCounter = 0;
+    nextQuestion(questionCounter); 
+    startTimer();
+
+}
+
 
 function startTimer() {
 
@@ -138,6 +185,7 @@ function startTimer() {
     }
 
 }
+
 
 function stopTimer() {
 
