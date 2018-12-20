@@ -16,7 +16,8 @@ var triviaArray = [
     {
         question: "Which school did the kids in Hey Arnold attend?",
         options: ["PS 118", "PS 120", "PS 108", "PS 111"],
-        answer: "PS 118"
+        answer: "PS 118",
+        image: "assets/images/hey-arnold.jpg"
     }
 ];
 
@@ -32,6 +33,8 @@ var incorrectCounter = 0;
 
 var correctAnswer; 
 
+var gameImage; 
+
 function nextQuestion(questionCounter) {
 
     for (var i = 0; i < triviaArray.length; i++) {
@@ -40,9 +43,9 @@ function nextQuestion(questionCounter) {
     
     }
 
-    var gameImage = $("<img>", triviaArray[questionCounter].image)
-    gameImage.addClass("game-image")
+    gameImage = $("<img>", triviaArray[questionCounter].image)
     gameImage.attr("src", triviaArray[questionCounter].image);
+    gameImage.addClass("img-fluid game-image")
     $("#game-image").append(gameImage); 
 
 
@@ -99,7 +102,9 @@ function rightAnswer() {
     $("#game-image").empty();
     $("#question-display").empty();
     $("#question-display").text("Correct!");
-    setTimeout(questionReset, 1000); 
+    $("#options-display").html('<div style="width:100%;height:0;padding-bottom:80%;position:relative;"><iframe src="https://giphy.com/embed/33UbGsRWIZhkc" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/dance-happy-ren-and-stimpy-33UbGsRWIZhkc"></a></p>'); 
+    
+    setTimeout(questionReset, 2 * 1000); 
 }
 
 
@@ -110,7 +115,9 @@ function wrongAnswer() {
     $("#game-image").empty();
     $("#question-display").empty();
     $("#question-display").text("Nope!");
-    setTimeout(questionReset, 1000); 
+    $("#options-display").html('<div style="width:100%;height:0;padding-bottom:55%;position:relative;"><iframe src="https://giphy.com/embed/l1BgS5jxbFoJwgr0Q" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed giph" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/kidschoice-kids-choice-awards-kca2017-l1BgS5jxbFoJwgr0Q"></a></p>');
+
+    setTimeout(questionReset, 2 * 1000); 
 }
 
 function timedOut() {
@@ -120,15 +127,19 @@ function timedOut() {
     $("#game-image").empty()
     $("#question-display").empty();
     $("#question-display").text("You timed out!")
-    setTimeout(questionReset, 1000); 
+    $("#options-display").html('<div style="width:100%;height:0;padding-bottom:75%;position:relative;"><iframe src="https://giphy.com/embed/BRFBzsQqiIUrm" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed giph" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/90s-nickelodeon-morning-BRFBzsQqiIUrm"></a></p>')
+
+    setTimeout(questionReset, 2 * 1000); 
 
 }
 
-function questionReset() {
+function questionReset() {   
 
     questionCounter++;
 
     if (questionCounter < triviaArray.length) {
+
+        $("#options-display").empty(); 
         nextQuestion(questionCounter);
         startTimer();
     }
@@ -145,6 +156,7 @@ function questionReset() {
 function gameOver() {
     
     $("#question-display").empty();
+    $("#options-display").empty()
     $("#question-display").text("Game over. Click the button to play again");
     $("#correct").append("Correct: ", correctCounter); 
     $("#wrong").append("Incorrect: ", incorrectCounter);
@@ -206,14 +218,13 @@ function stopTimer() {
 function count() {
         time --;
         $("#timer").text(time); 
-        /*
+
         if (time === 0) {
             
             stopTimer();
             timedOut(); 
 
         }
-        */
 
 }
 

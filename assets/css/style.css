@@ -1,9 +1,3 @@
-.image{
-    height: 100%; 
-    width: 100%;
-    padding-bottom: 15px; 
-}
-
 
 body { 
     background-color: black;
@@ -16,12 +10,14 @@ body {
 
 h1 {
     color: orange; 
-    padding: 30px; 
+    padding: 20px; 
 }
 
 .container{
-    background-color: white; 
-    height: 600px; 
+    background-color: white;  
+    height: auto; 
+    padding-top: 10px; 
+    padding-bottom: 30px; 
 }
 
 #question-display {
@@ -30,12 +26,6 @@ h1 {
     padding-bottom: 10px; 
 }
 
-.game-image {
-    height: 100%;
-    width: 100%;
-    padding-top: 30px;
-    padding-bottom: 20px;  
-}
 
 #timer {
     text-align: center; 
@@ -50,6 +40,11 @@ h1 {
     text-align: center; 
 }
 
+.giph{
+    padding-top: 20px; 
+}
+
+
 .answer-button {
     width: 100%;
     margin-top: 5px
@@ -58,3 +53,4 @@ h1 {
 .start-button {
     width: 100%; 
 }
+
