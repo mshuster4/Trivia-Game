@@ -160,6 +160,7 @@ function gameOver() {
     $("#question-display").text("Game over. Click the button to play again");
     $("#correct").append("Correct: ", correctCounter); 
     $("#wrong").append("Incorrect: ", incorrectCounter);
+    $("#options-display").html('<img src="assets/images/game-over-image.jpg" class="img-fluid" alt="game-over">')
 
     createRefreshButton();
 
@@ -184,6 +185,7 @@ function createRefreshButton(){
 
 function gameReset() {
 
+    $("#options-display").empty(); 
     $("#correct").empty();
     $("#wrong").empty(); 
     questionCounter = 0;
