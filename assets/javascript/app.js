@@ -1,23 +1,17 @@
-//Display start page with start button when page loads or game resets 
-//When button is pressed, display 10 sec timer along with muliple choice question 
-//If the user presses the correct answer the timer stops and the "correct answer" image is displayed
-//If the user presses the incorrect answer or time runs out, the "nope" image is display 
-//Game moves onto the next question a few seconds afterward with no prompting 
-//After all questions are done, display correct answers, incorrect answers, and unanswered questions
-//Display "Start over?"
-//Reset game (with no page reload)
 
 var triviaArray = [
     {
         question: "Which type of animal is Rocko from Rockos Modern Life",
         options: ["Dog", "Mouse", "Wallaby", "Beaver"],
-        answer: "Wallaby"
-
+        answer: "Wallaby",
+        image: "assets/images/rockos-modern-life.jpg"
     },
     {
         question: "What is the name of Rugrat Angelica's doll?",
         options: ["Betty", "Lisa", "Sandy", "Cynthia"],
-        answer: "Cynthia"
+        answer: "Cynthia",
+        image: "assets/images/rugrats.jpg"
+
     },
     {
         question: "Which school did the kids in Hey Arnold attend?",
@@ -43,18 +37,27 @@ function nextQuestion(questionCounter) {
     for (var i = 0; i < triviaArray.length; i++) {
 
     $("#question-display").html(triviaArray[questionCounter].question); 
-
+    
     }
+
+    var gameImage = $("<img>", triviaArray[questionCounter].image)
+    gameImage.addClass("game-image")
+    gameImage.attr("src", triviaArray[questionCounter].image);
+    $("#game-image").append(gameImage); 
+
 
     checkQuestion(questionCounter); 
 
 }
 
 function checkQuestion(questionCounter) {
+    
 
+    
     for (var i = 0; i < triviaArray[questionCounter].options.length; i++) {
-        var answerBtn = $("<button>");
-        answerBtn.addClass("answer-button");
+        var answerBtn = $('<button></button>');
+        answerBtn.addClass("btn btn-primary text-align-center answer-button");
+        answerBtn.attr("type", "button"); 
         answerBtn.attr("value", triviaArray[questionCounter].options[i]); 
         answerBtn.text(triviaArray[questionCounter].options[i]);
         $("#options-display").append(answerBtn); 
@@ -93,8 +96,9 @@ function rightAnswer() {
 
     $("#options-display").empty();
     $("#timer").empty();
+    $("#game-image").empty();
     $("#question-display").empty();
-    $("#question-display").text("Correct!")
+    $("#question-display").text("Correct!");
     setTimeout(questionReset, 1000); 
 }
 
@@ -103,8 +107,9 @@ function wrongAnswer() {
 
     $("#options-display").empty();
     $("#timer").empty(); 
+    $("#game-image").empty();
     $("#question-display").empty();
-    $("#question-display").text("Nope!")
+    $("#question-display").text("Nope!");
     setTimeout(questionReset, 1000); 
 }
 
@@ -112,6 +117,7 @@ function timedOut() {
 
     $("#options-display").empty();
     $("#timer").empty(); 
+    $("#game-image").empty()
     $("#question-display").empty();
     $("#question-display").text("You timed out!")
     setTimeout(questionReset, 1000); 
@@ -123,7 +129,6 @@ function questionReset() {
     questionCounter++;
 
     if (questionCounter < triviaArray.length) {
-        console.log("questionsCounter", questionCounter);
         nextQuestion(questionCounter);
         startTimer();
     }
@@ -152,6 +157,7 @@ function createRefreshButton(){
     
     var resetButton = $('<button>Start</button>');
     resetButton.addClass("btn btn-primary");
+    resetButton.addClass("start-button"); 
     resetButton.attr("type", "button"); 
     $('.start-restart-button').append(resetButton);
     resetButton.on('click', function(){
@@ -200,20 +206,24 @@ function stopTimer() {
 function count() {
         time --;
         $("#timer").text(time); 
+        /*
         if (time === 0) {
             
             stopTimer();
             timedOut(); 
 
         }
+        */
 
 }
 
-$("#start-button").on('click', function() {
+$("#first-start-button").on('click', function() {
 
-    $(this).hide(); 
+    $(this).hide();
+    $("#title-page-image").hide();
+    $("#title-page-image").empty();  
     nextQuestion(questionCounter); 
     startTimer();
-
+    
 }); 
 

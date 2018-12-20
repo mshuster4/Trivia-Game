@@ -1,0 +1,60 @@
+.image{
+    height: 100%; 
+    width: 100%;
+    padding-bottom: 15px; 
+}
+
+
+body { 
+    background-color: black;
+}
+
+.start-button {
+    width: 100%;
+    margin-top: 30px;  
+}
+
+h1 {
+    color: orange; 
+    padding: 30px; 
+}
+
+.container{
+    background-color: white; 
+    height: 600px; 
+}
+
+#question-display {
+    text-align: center; 
+    padding-top: 15px; 
+    padding-bottom: 10px; 
+}
+
+.game-image {
+    height: 100%;
+    width: 100%;
+    padding-top: 30px;
+    padding-bottom: 20px;  
+}
+
+#timer {
+    text-align: center; 
+    margin-top: 15px; 
+}
+
+#wrong{
+    text-align: center;
+}
+
+#correct{
+    text-align: center; 
+}
+
+.answer-button {
+    width: 100%;
+    margin-top: 5px
+}
+
+.start-button {
+    width: 100%; 
+}
