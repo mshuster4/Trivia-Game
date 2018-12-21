@@ -1,3 +1,8 @@
+@font-face {
+    font-family: nickFont;
+    src: url(../font/Balloon-Extra-Bold-Regular/balloonextraboldregular.ttf); 
+  }
+
 
 body { 
     background-color: black;
@@ -10,7 +15,12 @@ body {
 
 h1 {
     color: orange; 
+    font-family: nickFont; 
     padding: 20px; 
+}
+
+h2 {
+    color: orange
 }
 
 .container{
