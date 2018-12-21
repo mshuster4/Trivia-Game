@@ -222,9 +222,10 @@ function count() {
         $("#timer").text(time); 
 
         if (time === 0) {
-            
+            /*
             stopTimer();
             timedOut(); 
+            */
 
         }
 
@@ -233,8 +234,8 @@ function count() {
 $("#first-start-button").on('click', function() {
 
     $(this).hide();
-    $("#title-page-image").hide();
-    $("#title-page-image").empty();  
+    $("#game-image").empty();  
+
     nextQuestion(questionCounter); 
     startTimer();
     
