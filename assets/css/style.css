@@ -18,7 +18,7 @@ header {
 }
 
 #first-start-button {
-    margin-bottom: -50px; 
+    margin-bottom: -45px; 
 }
 
 .start-button {
@@ -29,6 +29,12 @@ header {
     border: none;
     font-family: nickFont;
     font-size: 55px; 
+}
+
+.start-button:hover {
+    background-color: #c7ef4f;
+    border: none;
+    color: #5dc0f5;
 }
 
 #headerText {
@@ -79,8 +85,8 @@ header {
 
 .giph {
     padding-top: 10px; 
+    pointer-events: none; 
 }
-
 
 .answer-button {
     width: 100%;
@@ -90,6 +96,12 @@ header {
     color: #5dc0f5;
     font-size: 25px;
     font-family: nickFont;
+}
+
+.answer-button:hover {
+    background-color: #f5ba40;
+    border: none;
+    color: white; 
 }
 
 .start-button {

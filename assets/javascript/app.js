@@ -1,7 +1,7 @@
 
 var triviaArray = [
     {
-        question: "Which type of animal was Rocko from <i>Rockos Modern Life</i>?",
+        question: "Which type of animal was Rocko from 'Rockos Modern Life'",
         options: ["Dog", "Mouse", "Wallaby", "Beaver"],
         answer: "Wallaby",
         image: "assets/images/rockos-modern-life.jpg"
@@ -14,7 +14,7 @@ var triviaArray = [
 
     },
     {
-        question: "Which school did the kids in <i>Hey Arnold</i> attend?",
+        question: "Which school did the kids in 'Hey Arnold' attend?",
         options: ["PS 118", "PS 120", "PS 108", "PS 111"],
         answer: "PS 118",
         image: "assets/images/hey-arnold.png"
@@ -32,13 +32,13 @@ var triviaArray = [
         image: "assets/images/angry-beavers.jpg"
     },
     {
-        question: "Who was NOT an <i>All That</i> cast member?",
+        question: "Who was NOT an 'All That' cast member?",
         options: ["Amanda Bynes", "Nick Cannon", "Summer Sanders", "Danny Tamberelli"],
         answer: "Summer Sanders",
         image:  "assets/images/all_that.png"
     },
     {
-        question: "What were the names of the hosts on <i>KaBlam!</i>?",
+        question: "What were the names of the hosts on 'KaBlam!'?",
         options: ["Henry and June", "Harry and Jamie", "Hector and Jessica", "Hugh and Jenny"],
         answer: "Henry and June",
         image: "assets/images/kablam.png"
@@ -50,7 +50,7 @@ var triviaArray = [
         image: "assets/images/slime.jpg"
     },
     {
-        question: "On <i>Kenan and Kel</i> What was Kel's favorite drink?",
+        question: "On 'Kenan and Kel' What was Kel's favorite drink?",
         options: ["Grape Soda", "Lime Soda", "Cherry Cola", "Orange Soda"],
         answer: "Orange Soda",
         image: "assets/images/kenan-and-kel.jpg"
@@ -85,9 +85,9 @@ function nextQuestion(questionCounter) {
     
     }
 
-    gameImage = $("<img>", triviaArray[questionCounter].image)
+    gameImage = $("<img>", triviaArray[questionCounter].image);
     gameImage.attr("src", triviaArray[questionCounter].image);
-    gameImage.addClass("img-fluid show-images")
+    gameImage.addClass("img-fluid show-images rounded"); 
     $("#game-image").append(gameImage); 
 
 
@@ -146,7 +146,7 @@ function rightAnswer() {
     $("#question-display").text("Correct!");
     $("#options-display").html('<div style="width:100%;height:0;padding-bottom:80%;position:relative;"><iframe src="https://giphy.com/embed/33UbGsRWIZhkc" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed giph" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/dance-happy-ren-and-stimpy-33UbGsRWIZhkc"></a></p>'); 
     
-    setTimeout(questionReset, 3 * 1000); 
+    setTimeout(questionReset, 2 * 1000); 
     
 }
 
@@ -160,7 +160,7 @@ function wrongAnswer() {
     $("#question-display").text("Nope!");
     $("#options-display").html('<div style="width:100%;height:0;padding-bottom:55%;position:relative;"><iframe src="https://giphy.com/embed/l1BgS5jxbFoJwgr0Q" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed giph" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/kidschoice-kids-choice-awards-kca2017-l1BgS5jxbFoJwgr0Q"></a></p>');
     
-    setTimeout(questionReset, 3 * 1000); 
+    setTimeout(questionReset, 2 * 1000); 
 
 }
 
@@ -173,7 +173,7 @@ function timedOut() {
     $("#question-display").text("You timed out!")
     $("#options-display").html('<div style="width:100%;height:0;padding-bottom:75%;position:relative;"><iframe src="https://giphy.com/embed/BRFBzsQqiIUrm" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed giph" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/90s-nickelodeon-morning-BRFBzsQqiIUrm"></a></p>')
     
-    setTimeout(questionReset, 3 * 1000); 
+    setTimeout(questionReset, 2 * 1000); 
     
 }
 
@@ -204,7 +204,7 @@ function gameOver() {
     $("#question-display").text("Game over. Click the button to play again");
     $("#correct").append("Correct: ", correctCounter); 
     $("#wrong").append("Incorrect: ", incorrectCounter);
-    $("#title-image").html('<img src="assets/images/game-over-image.jpg" class="img-fluid show-images" alt="game-over">')
+    $("#title-image").html('<img src="assets/images/game-over-image.jpg" class="img-fluid show-images img-rounded" alt="game-over">')
 
     createRefreshButton();
 
