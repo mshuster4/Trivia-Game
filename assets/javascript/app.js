@@ -201,7 +201,7 @@ function gameOver() {
     
     $("#question-display").empty();
     $("#options-display").empty()
-    $("#question-display").text("Game over. Click the button to play again");
+    $("#question-display").text("Game over. Click the button to play again.");
     $("#correct").append("Correct: ", correctCounter); 
     $("#wrong").append("Incorrect: ", incorrectCounter);
     $("#title-image").html('<img src="assets/images/game-over-image.jpg" class="img-fluid show-images img-rounded" alt="game-over">')
