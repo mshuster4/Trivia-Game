@@ -1,7 +1,7 @@
 
 var triviaArray = [
     {
-        question: "Which type of animal is Rocko from Rockos Modern Life",
+        question: "Which type of animal is Rocko from Rockos Modern Life?",
         options: ["Dog", "Mouse", "Wallaby", "Beaver"],
         answer: "Wallaby",
         image: "assets/images/rockos-modern-life.jpg"
@@ -17,7 +17,7 @@ var triviaArray = [
         question: "Which school did the kids in Hey Arnold attend?",
         options: ["PS 118", "PS 120", "PS 108", "PS 111"],
         answer: "PS 118",
-        image: "assets/images/hey-arnold.jpg"
+        image: "assets/images/hey-arnold.png"
     }
 ];
 
@@ -45,7 +45,7 @@ function nextQuestion(questionCounter) {
 
     gameImage = $("<img>", triviaArray[questionCounter].image)
     gameImage.attr("src", triviaArray[questionCounter].image);
-    gameImage.addClass("img-fluid game-image")
+    gameImage.addClass("img-fluid show-images")
     $("#game-image").append(gameImage); 
 
 
@@ -102,9 +102,10 @@ function rightAnswer() {
     $("#game-image").empty();
     $("#question-display").empty();
     $("#question-display").text("Correct!");
-    $("#options-display").html('<div style="width:100%;height:0;padding-bottom:80%;position:relative;"><iframe src="https://giphy.com/embed/33UbGsRWIZhkc" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/dance-happy-ren-and-stimpy-33UbGsRWIZhkc"></a></p>'); 
+    $("#options-display").html('<div style="width:100%;height:0;padding-bottom:80%;position:relative;"><iframe src="https://giphy.com/embed/33UbGsRWIZhkc" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed giph" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/dance-happy-ren-and-stimpy-33UbGsRWIZhkc"></a></p>'); 
     
     setTimeout(questionReset, 2 * 1000); 
+    
 }
 
 
@@ -116,8 +117,9 @@ function wrongAnswer() {
     $("#question-display").empty();
     $("#question-display").text("Nope!");
     $("#options-display").html('<div style="width:100%;height:0;padding-bottom:55%;position:relative;"><iframe src="https://giphy.com/embed/l1BgS5jxbFoJwgr0Q" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed giph" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/kidschoice-kids-choice-awards-kca2017-l1BgS5jxbFoJwgr0Q"></a></p>');
-
+    
     setTimeout(questionReset, 2 * 1000); 
+
 }
 
 function timedOut() {
@@ -128,9 +130,9 @@ function timedOut() {
     $("#question-display").empty();
     $("#question-display").text("You timed out!")
     $("#options-display").html('<div style="width:100%;height:0;padding-bottom:75%;position:relative;"><iframe src="https://giphy.com/embed/BRFBzsQqiIUrm" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed giph" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/90s-nickelodeon-morning-BRFBzsQqiIUrm"></a></p>')
-
+    
     setTimeout(questionReset, 2 * 1000); 
-
+    
 }
 
 function questionReset() {   
@@ -160,7 +162,7 @@ function gameOver() {
     $("#question-display").text("Game over. Click the button to play again");
     $("#correct").append("Correct: ", correctCounter); 
     $("#wrong").append("Incorrect: ", incorrectCounter);
-    $("#options-display").html('<img src="assets/images/game-over-image.jpg" class="img-fluid" alt="game-over">')
+    $("#title-image").html('<img src="assets/images/game-over-image.jpg" class="img-fluid show-images" alt="game-over">')
 
     createRefreshButton();
 
@@ -185,9 +187,11 @@ function createRefreshButton(){
 
 function gameReset() {
 
-    $("#options-display").empty(); 
+    $("#title-image").empty(); 
+    $("#questions-display").empty(); 
     $("#correct").empty();
     $("#wrong").empty(); 
+    $("#timer").empty(); 
     questionCounter = 0;
     correctCounter = 0;
     incorrectCounter = 0;
@@ -222,10 +226,9 @@ function count() {
         $("#timer").text(time); 
 
         if (time === 0) {
-            /*
+            
             stopTimer();
             timedOut(); 
-            */
 
         }
 
@@ -234,7 +237,7 @@ function count() {
 $("#first-start-button").on('click', function() {
 
     $(this).hide();
-    $("#game-image").empty();  
+    $("#title-image").empty();  
 
     nextQuestion(questionCounter); 
     startTimer();
