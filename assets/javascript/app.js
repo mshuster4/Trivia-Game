@@ -1,23 +1,65 @@
 
 var triviaArray = [
     {
-        question: "Which type of animal is Rocko from Rockos Modern Life?",
+        question: "Which type of animal was Rocko from <i>Rockos Modern Life</i>?",
         options: ["Dog", "Mouse", "Wallaby", "Beaver"],
         answer: "Wallaby",
         image: "assets/images/rockos-modern-life.jpg"
     },
     {
-        question: "What is the name of Rugrat Angelica's doll?",
+        question: "What was the name of Rugrat Angelica's doll?",
         options: ["Betty", "Lisa", "Sandy", "Cynthia"],
         answer: "Cynthia",
         image: "assets/images/rugrats.jpg"
 
     },
     {
-        question: "Which school did the kids in Hey Arnold attend?",
+        question: "Which school did the kids in <i>Hey Arnold</i> attend?",
         options: ["PS 118", "PS 120", "PS 108", "PS 111"],
         answer: "PS 118",
         image: "assets/images/hey-arnold.png"
+    },
+    {
+        question: "What was the name of Doug Funny's favorite band?",
+        options: ["The Beets", "The Beatles", "The Bees", "The BeeGees"],
+        answer: "The Beets",
+        image: "assets/images/doug.jpg"
+    },
+    {
+        question: "Which state did the Angry Beavers reside in?",
+        options: ["Washington", "Montana", "Oregon", "Florida"],
+        answer: "Oregon",
+        image: "assets/images/angry-beavers.jpg"
+    },
+    {
+        question: "Who was NOT an <i>All That</i> cast member?",
+        options: ["Amanda Bynes", "Nick Cannon", "Summer Sanders", "Danny Tamberelli"],
+        answer: "Summer Sanders",
+        image:  "assets/images/all_that.png"
+    },
+    {
+        question: "What were the names of the hosts on <i>KaBlam!</i>?",
+        options: ["Henry and June", "Harry and Jamie", "Hector and Jessica", "Hugh and Jenny"],
+        answer: "Henry and June",
+        image: "assets/images/kablam.png"
+    },
+    {
+        question: "Which of these was NOT a Nickelodeon game show?",
+        options: ["Double Dare", "Wild & Out", "Figure it Out", "Wild & Crazy Kids"],
+        answer: "Wild & Out",
+        image: "assets/images/slime.jpg"
+    },
+    {
+        question: "On <i>Kenan and Kel</i> What was Kel's favorite drink?",
+        options: ["Grape Soda", "Lime Soda", "Cherry Cola", "Orange Soda"],
+        answer: "Orange Soda",
+        image: "assets/images/kenan-and-kel.jpg"
+    },
+    {
+        question: "Which two objects were CatDog's house made from?",
+        options: ["Yarnball & Stick", "Fire Hydrant & Mouse", "Bird & Tennis Ball" ,"Fish & Bone"],
+        answer: "Fish & Bone", 
+        image: "assets/images/cat-dog.jpg"
     }
 ];
 
@@ -104,7 +146,7 @@ function rightAnswer() {
     $("#question-display").text("Correct!");
     $("#options-display").html('<div style="width:100%;height:0;padding-bottom:80%;position:relative;"><iframe src="https://giphy.com/embed/33UbGsRWIZhkc" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed giph" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/dance-happy-ren-and-stimpy-33UbGsRWIZhkc"></a></p>'); 
     
-    setTimeout(questionReset, 2 * 1000); 
+    setTimeout(questionReset, 3 * 1000); 
     
 }
 
@@ -118,7 +160,7 @@ function wrongAnswer() {
     $("#question-display").text("Nope!");
     $("#options-display").html('<div style="width:100%;height:0;padding-bottom:55%;position:relative;"><iframe src="https://giphy.com/embed/l1BgS5jxbFoJwgr0Q" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed giph" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/kidschoice-kids-choice-awards-kca2017-l1BgS5jxbFoJwgr0Q"></a></p>');
     
-    setTimeout(questionReset, 2 * 1000); 
+    setTimeout(questionReset, 3 * 1000); 
 
 }
 
@@ -131,7 +173,7 @@ function timedOut() {
     $("#question-display").text("You timed out!")
     $("#options-display").html('<div style="width:100%;height:0;padding-bottom:75%;position:relative;"><iframe src="https://giphy.com/embed/BRFBzsQqiIUrm" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed giph" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/90s-nickelodeon-morning-BRFBzsQqiIUrm"></a></p>')
     
-    setTimeout(questionReset, 2 * 1000); 
+    setTimeout(questionReset, 3 * 1000); 
     
 }
 

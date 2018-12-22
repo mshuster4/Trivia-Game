@@ -17,6 +17,10 @@ header {
     margin-top: 20px; 
 }
 
+#first-start-button {
+    margin-bottom: -50px; 
+}
+
 .start-button {
     width: 100%;
     margin-top: 10px;
@@ -62,7 +66,6 @@ header {
 #timer {
     text-align: center; 
     margin-top: 15px; 
-    margin-bottom: 15px; 
 }
 
 #wrong {
