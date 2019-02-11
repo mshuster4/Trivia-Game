@@ -9,10 +9,13 @@ This timed trivia game challenges players' knowledge of 90's Nickelodeon shows a
 
 ## Game Screen Shots
 ### Homepage
+![Homepage Image](https://raw.githubusercontent.com/mshuster4/Trivia-Game/master/assets/images/trivia_homepage.png)
 
 ### Example Question
+![Example Question Image](https://raw.githubusercontent.com/mshuster4/Trivia-Game/master/assets/images/trivia_question.png)
 
 ### Results Page
+![Results Image](https://raw.githubusercontent.com/mshuster4/Trivia-Game/master/assets/images/trivia_results.png)
 
 ## Technologies/Frameworks Used
 * HTML
